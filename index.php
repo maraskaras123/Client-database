@@ -4,6 +4,7 @@ if(isset($_POST['submitted'])){
    if($fgmembersite->Login()){
         $fgmembersite->RedirectToURL("login-home.php");
    }
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
