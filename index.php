@@ -1,3 +1,10 @@
+<?PHP
+require_once("./include/membersite_config.php");
+if(isset($_POST['submitted'])){
+   if($fgmembersite->Login()){
+        $fgmembersite->RedirectToURL("login-home.php");
+   }
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
     <head>
@@ -5,14 +12,13 @@
       <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css"/>
     </head>
     <body>
-        <div id='fg_membersite_content'>
-            <h2>Membership website</h2>
-            <ul>
-                <li><a href='register.php'>Register</a></li>
-                <li><a href='confirmreg.php'>Confirm registration</a></li>
-                <li><a href='login.php'>Login</a></li>
-                <li><a href='access-controlled.php'>A sample member's only page</a></li>
-            </ul>
-        </div>
+        <div class="login-page">
+			<div class="form">
+				<form class="login-form">
+					<input type="text" placeholder="username"/>
+					<input type="password" placeholder="password"/>
+					<button>login</button>
+			</div>
+		</div>
     </body>
 </html>
