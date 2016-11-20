@@ -9,8 +9,8 @@ if(isset($_POST['submitted'])){
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
     <head>
-      <title>Membership Website Sample</title>
-      <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css"/>
+      <title>Login</title>
+      <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
     <body>
         <div class="login-page">
