@@ -16,8 +16,8 @@ if(isset($_POST['submitted'])){
         <div class="login-page">
 			<div class="form">
 				<form class="login-form">
-					<input type="text" placeholder="username"/>
-					<input type="password" placeholder="password"/>
+					<input type='text' name='username' id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" />
+					<input type='password' name='password' id='password' maxlength="50" />
 					<input type='submit' name='Submit' value='Submit' />
 					<button>login</button>
 			</div>
