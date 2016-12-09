@@ -18,6 +18,7 @@ if(isset($_POST['submitted'])){
 				<form class="login-form">
 					<input type="text" placeholder="username"/>
 					<input type="password" placeholder="password"/>
+					<input type='submit' name='Submit' value='Submit' />
 					<button>login</button>
 			</div>
 		</div>
