@@ -18,7 +18,7 @@ if(isset($_POST['submitted'])){
 <body>
 
 <!-- Form Code Start -->
-<div id='fg_membersite'>
+<div class="form">
 <form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Login</legend>
