@@ -5,6 +5,11 @@ if(isset($_POST['submitted'])){
         $fgmembersite->RedirectToURL("main.php");
    }
 }
+if($fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("main.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html<!-- xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"-->>

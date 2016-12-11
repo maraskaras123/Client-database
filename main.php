@@ -9,4 +9,5 @@ if(!$fgmembersite->CheckLogin())
 <!DOCTYPE html>
 <html>
 hello!
+<p><a href='logout.php'>Logout</a></p>
 </html>

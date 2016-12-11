@@ -5,6 +5,11 @@ if(isset($_POST['submitted'])){
         $fgmembersite->RedirectToURL("main.php");
    }
 }
+if($fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("main.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html<!-- xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"-->>
@@ -39,6 +44,7 @@ if(isset($_POST['submitted'])){
 			</form>
 <!-- client-side Form Validations:
 Uses the excellent form validation script from JavaScript-coder.com-->
+<!--
 			<script type='text/javascript'>
 				// <![CDATA[
 				var frmvalidator  = new Validator("login");
@@ -51,6 +57,7 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 				// ]]>
 			</script>
 		</div>
+		-->
 <!--
 Form Code End (see html-form-guide.com for more info.)
 -->
