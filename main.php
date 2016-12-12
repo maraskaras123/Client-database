@@ -8,6 +8,12 @@ if(!$fgmembersite->CheckLogin())
 ?>
 <!DOCTYPE html>
 <html>
-hello!
-<p><a href='logout.php'>Logout</a></p>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style/style.css" />
+		<title>main</title>
+	</head>
+	<body>
+		hello!
+		<p><a href='logout.php'>Logout</a></p>
+	</body>
 </html>
