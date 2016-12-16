@@ -1,12 +1,10 @@
 <?PHP
 require_once("./include/membersite_config.php");
 if(isset($_POST['submitted'])){
-   if($fgmembersite->Login()){
+   if($fgmembersite->Login())
         $fgmembersite->RedirectToURL("main.php");
-   }
 }
-if($fgmembersite->CheckLogin())
-{
+if($fgmembersite->CheckLogin()){
     $fgmembersite->RedirectToURL("main.php");
     exit;
 }
