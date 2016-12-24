@@ -7,12 +7,10 @@ $fgmembersite->LogOut();
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
 		<title>Logged out</title>
-		<link rel="STYLESHEET" type="text/css" href="style/style.css" />
+		<link rel="stylesheet" type="text/css" href="style/style.css" />
 	</head>
 	<body>
 		<h2>You have logged out</h2>
-		<p>
-			<a href='http://belekas.esy.es'>Login Again</a>
-		</p>
+		<p class='logout'><a href='http://belekas.esy.es'><button>Login Again</button></a></p>
 	</body>
 </html>

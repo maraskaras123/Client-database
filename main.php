@@ -15,7 +15,7 @@ if(!$fgmembersite->CheckLogin())
 		<script src="scripts/clickRow.js"></script>
 	</head>
 	<body>
-		<p class="button" align="right"><a href='logout.php'><button>logout</button></a></p>
+		<p class="main-logout" align="right"><a href='logout.php'><button>logout</button></a></p>
 		<div style="overflow-x:auto;">
 			<table class="visit">
 				<thead>
