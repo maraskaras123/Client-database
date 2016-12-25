@@ -10,7 +10,9 @@ $fgmembersite->LogOut();
 		<link rel="stylesheet" type="text/css" href="style/style.css" />
 	</head>
 	<body>
-		<h2>You have logged out</h2>
-		<p class='logout'><a href='http://belekas.esy.es'><button>Login Again</button></a></p>
+		<div class='form'>
+			<h2>You have logged out</h2>
+			<p class='logout'><a href='http://belekas.esy.es'><button>Login Again</button></a></p>
+		</div>
 	</body>
 </html>
