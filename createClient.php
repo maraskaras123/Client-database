@@ -8,7 +8,7 @@ if(!$fgmembersite->CheckLogin()) {
 <DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="style/clientForm.css" />
+        <link rel="stylesheet" type="text/css" href="style/Form.css" />
 		<title>visit info</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
