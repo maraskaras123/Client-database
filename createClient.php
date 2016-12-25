@@ -42,7 +42,7 @@ if(!$fgmembersite->CheckLogin()) {
                     <textarea name="remarks" id="remarks" class="field-long field-textarea" placeholder="Optional" ></textarea>
                 </li>
                 <li>
-                    <input type="submit" value="Submit" name="client" />
+                    <input type="submit" value="Submit" name="submit" />
                 </li>
             </ul>
         </form>

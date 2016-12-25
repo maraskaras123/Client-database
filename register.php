@@ -31,7 +31,7 @@ if(isset($_POST['submitted']))
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 
 <div class='short_explanation'>* required fields</div>
-<input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
+<input type='text' style="display: none;" class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
 
 <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
 <div class='container'>
