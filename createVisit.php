@@ -4,6 +4,10 @@ if(!$fgmembersite->CheckLogin()) {
     $fgmembersite->RedirectToURL("index.php");
     exit;
 }
+
+$db = new mysqli('mysql.hostinger.lt', 'u357666557_user', 'gedas69tevas', 'u357666557_yolo') or die ("Connection failed: " . $db->connect_error);
+$main_query = "SELECT client_id, name, surname, number FROM clients";
+$main_result = $db->query($main_query);
 ?>
 <DOCTYPE html>
 <html>
@@ -23,14 +27,15 @@ if(!$fgmembersite->CheckLogin()) {
 					<tr>
 						<th>Name</th>
 						<th>Surname</th>
-						<th>Date</th>
 						<th>Number</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr id="0"><td>Rasa</td><td>Maroziene</td><td>2016-09-17</td><td>+37065599996</td></tr>
-					<tr id="1"><td>Arnas</td><td>Marozas</td><td>2016-10-01</td><td>+37064794814</td></tr>
-					<tr id="2"><td>Jurijus</td><td>Marozas</td><td>2016-12-21</td><td>+37064400063</td></tr>
+                    <?
+                        while($row = $main_result->fetch_assoc()){
+							echo ("<tr id=\"" . $row['client_id'] . "\"><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['number'] . "</td></tr>");
+						}
+                    ?>
 				</tbody>
 			</table>
         </div>
