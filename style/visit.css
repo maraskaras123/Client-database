@@ -1,4 +1,13 @@
 img {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
+}
+body{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+div{
+    background-color: #fff;
+    text-align: center;
 }
