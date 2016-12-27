@@ -1,13 +1,11 @@
 <?PHP
 require_once("./include/membersite_config.php");
+require_once("./include/DBInteg.php");
 if(!$fgmembersite->CheckLogin()) {
     $fgmembersite->RedirectToURL("index.php");
     exit;
 }
 
-$db = new mysqli('mysql.hostinger.lt', 'u357666557_user', 'gedas69tevas', 'u357666557_yolo') or die ("Connection failed: " . $db->connect_error);
-$main_query = "SELECT client_id, name, surname, number FROM clients";
-$main_result = $db->query($main_query);
 ?>
 <DOCTYPE html>
 <html>
@@ -20,8 +18,14 @@ $main_result = $db->query($main_query);
     </head>
     <body>
         <div id="picker">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
+            <form action="/createVisit.php" method="post">
+			    <ul class="form-style-1" style="width: 100%;">
+				    <li style="display: inline;"><input type="text" name="name" class="field-quater" placeholder="Name" /></li>
+				    <li style="display: inline;"><input type="text" name="surname" class="field-quater" placeholder="Surname" /></li>
+				    <li style="display: inline;"><input type="text" name="number" class="field-quater" placeholder="Number" /></li>
+				    <li style="display: inline;"><input type="submit" value="Submit" name="submit" class="field-quater"></li>
+			    </ul>
+		    </form>
             <table class="visit">
 				<thead>
 					<tr>
@@ -32,9 +36,16 @@ $main_result = $db->query($main_query);
 				</thead>
 				<tbody>
                     <?
-                        while($row = $main_result->fetch_assoc()){
-							echo ("<tr id=\"" . $row['client_id'] . "\"><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['number'] . "</td></tr>");
-						}
+                        if(!empty($_POST['name']) && !empty($_POST['surname']))
+							getClientsByNameAndSurname($db, $client_query, $_POST['name'], $_POST['surname']);
+						else if(!empty($_POST['name']))
+                            getClientsByName($db, $client_query, $_POST['name']);
+						else if (!empty($_POST['surname']))
+							getClientsBySurname($db, $client_query, $_POST['surname']);
+                        else if (!empty($_POST['number']))
+                            getClientsByNumber($db, $client_query, $_POST['number']);
+						else
+							getAllClients($db, $client_query);
                     ?>
 				</tbody>
 			</table>

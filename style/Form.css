@@ -1,6 +1,6 @@
 .form-style-1 {
     margin:10px auto;
-    max-width: 400px;
+    /*max-width: 400px;*/
     padding: 20px 12px 10px 20px;
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
@@ -39,6 +39,10 @@ select{
     -o-transition: all 0.30s ease-in-out;
     outline: none;  
 }
+.form-style-1 input[type=text], 
+.form-style-1 input[type=date]{
+    height: 30px;
+}
 /*.form-style-1 input[type=text]:focus, 
 .form-style-1 input[type=date]:focus,
 .form-style-1 input[type=datetime]:focus,
@@ -58,6 +62,9 @@ select{
 .form-style-1 .field-divided{
     width: 49%;
 }
+.form-style-1 .field-quater{
+    width: 24%;
+}
 .form-style-1 .field-long{
     width: 100%;
 }
@@ -66,6 +73,9 @@ select{
 }
 .form-style-1 .field-textarea{
     height: 100px;
+}
+.form-style-1{
+    width: 100%;
 }
 .form-style-1 input[type=submit], .form-style-1 input[type=button]{
     background: #4B99AD;
@@ -81,6 +91,21 @@ select{
 }
 .form-style-1 .required{
     color:red;
+}
+.form-style-1 button{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4691A4;
+    width: 24%;
+    border: 1px solid #000000;
+    padding: 5px;
+    color: #000000;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    font-weight: bold;
 }
 body{
     background: #76b852; /* fallback for old browsers */

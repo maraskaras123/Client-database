@@ -1,20 +1,17 @@
 <?PHP
 require_once("./include/membersite_config.php");
+require_once("./include/DBInteg.php");
 if(!$fgmembersite->CheckLogin())
 {
     $fgmembersite->RedirectToURL("index.php");
     exit;
 }
-
-$db = new mysqli('mysql.hostinger.lt', 'u357666557_user', 'gedas69tevas', 'u357666557_yolo') or die ("Connection failed: " . $db->connect_error);
-$main_query = "SELECT visit_id, person_id, date FROM visits";
-$person_query = "SELECT name, surname, number FROM clients WHERE client_id = \"";
-$main_result = $db->query($main_query);
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="style/style.css" />
+		<link rel="stylesheet" type="text/css" href="style/Form.css" />
 		<title>main</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="scripts/clickRow.js"></script>
@@ -25,6 +22,14 @@ $main_result = $db->query($main_query);
 			<a href='createVisit.php'><button style="background: #3DBBFF;">create visit</button></a>
 			<a href='logout.php' style='margin-left: 4.5%;'><button>logout</button></a>
 		</p>
+		<form action="/main.php" method="post">
+			<ul class="form-style-1" style="width: 100%;">
+				<li style="display: inline;"><input type="text" name="name" class="field-quater" placeholder="Name" /></li>
+				<li style="display: inline;"><input type="text" name="surname" class="field-quater" placeholder="Surname" /></li>
+				<li style="display: inline;"><input type="date" name="date" class="field-quater" placeholder="Date" /></li>
+				<li style="display: inline;"><input type="submit" value="Submit" name="submit" class="field-quater"></li>
+			</ul>
+		</form>
 		<div style="overflow-x:auto;">
 			<table class="visit">
 				<thead>
@@ -37,12 +42,17 @@ $main_result = $db->query($main_query);
 				</thead>
 				<tbody>
 					<?
-						while($row = $main_result->fetch_assoc()){
-							$id = $row['person_id'];
-							$person_result = $db->query($person_query . $id . "\"");
-    						$person = $person_result->fetch_assoc();
-							echo ("<tr id=\"" . $row['visit_id'] . "\"><td>" . $person['name'] . "</td><td>" . $person['surname'] . "</td><td>" . $row['date'] . "</td><td>" . $person['number'] . "</td></tr>");
+						if (!empty($_POST['name']) && !empty($_POST['surname']))
+							getVisitsByNameAndSurname($db, $name_surname_query, $visit_query, $_POST['name'], $_POST['surname']);
+						else if(!empty($_POST['name']))
+							getVisitsByName($db, $name_query, $visit_query, $_POST['name']);
+						else if (!empty($_POST['surname'])){
+							getVisitsBySurname($db, $surname_query, $visit_query, $_POST['surname']);
 						}
+						else if (!empty($_POST['date']))
+							getVisitsByDate($db, $date_query, $person_query, $_POST['date']);
+						else
+							getAllVisits($db, $main_query, $person_query);
 					?>
 				</tbody>
 			</table>
