@@ -42,7 +42,7 @@ $main_result = $db->query($main_query);
         <div id="main" style="display:none;">
             <form action="include/VisitInteg.php" method="post" enctype="multipart/form-data">
                 <input type='hidden' name='person' id='person' />
-                <ul class="form-style-1">
+                <ul class="form-style-1" style="max-width: 400px;">
                     <li>
                         <label>Date of visit</label>
                         <input type="date" name="date" class="field-long" placeholder="Date" />

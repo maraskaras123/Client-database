@@ -14,7 +14,7 @@ if(!$fgmembersite->CheckLogin()) {
     </head>
     <body>
         <form action="include/ClientInteg.php" method="post">
-            <ul class="form-style-1">
+            <ul class="form-style-1" style="max-width: 400px;">
                 <li>
                     <label>Full Name</label>
                     <input type="text" name="name" class="field-divided" placeholder="Name" />&nbsp;<input type="text" name="surname" class="field-divided" placeholder="Surname" />

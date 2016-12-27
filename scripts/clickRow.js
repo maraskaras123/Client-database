@@ -3,5 +3,5 @@ $(document).ready(function(){
     $('.visit tbody tr').click(function(){ 
         var fullLink = link + $(this).attr('id');
         window.location = fullLink;
-    })
+    });
 });
