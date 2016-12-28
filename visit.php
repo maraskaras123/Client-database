@@ -19,37 +19,42 @@ if(!$fgmembersite->CheckLogin()) {
     <body style="font-size: 30px; font-weight: bold; text-align: center;">
         <a href='main.php'><button style="background: #3DBBFF; width: 700px; padding: 2px; height: 50px; font-size: 20px;"><strong>Back to visits</strong></button></a>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 20px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
-            <?php
-                $visit = getVisitByID($db, $visitID_query, $_GET['id']);
-                $client = getClientByID($db, $clientID_query, $visit['person_id']);
-                echo ("{$client['name']} {$client['surname']} {$client['birth']}<br>");
-                echo ("{$visit['date']}<br>");
-                echo ("Type & amount: {$visit['type']} {$visit['amount']}<br>");
-                /*$price = $visit['price'];
-                if (strpos($price, '€') !== false) {*/
-                    $price = str_replace("€", "&euro;", $visit['price']);
-                /*}*/
-                echo ("Price: {$price}");
-            ?>
+            <p>
+                <?php
+                    $visit = getVisitByID($db, $visitID_query, $_GET['id']);
+                    $client = getClientByID($db, $clientID_query, $visit['person_id']);
+                    echo ("{$client['name']} {$client['surname']} {$client['birth']}<br>");
+                    echo ("{$client['number']}<br>");
+                    echo ("{$visit['date']}<br>");
+                    echo ("Type & amount: {$visit['type']} {$visit['amount']}<br>");
+                    /*$price = $visit['price'];
+                    if (strpos($price, '€') !== false) {*/
+                        $price = str_replace("€", "&euro;", $visit['price']);
+                    /*}*/
+                    echo ("Price: {$price}");
+                ?>
+            </p>
         </div>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 10px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
-        Before photos:
-        <br>
-        <a download="8_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+            <p>
+                Before photos:<br>
+                <a download="8_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+            </p>
         </div>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 10px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
-        After photos:
-        <br>
-        <a download="1_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="2_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="3_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="4_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="5_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="6_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="7_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="8_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="9_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-        <a download="10_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+            <p>
+                After photos:<br>
+                <a download="1_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="2_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="3_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="4_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="5_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="6_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="7_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="8_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="9_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                <a download="10_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+            </p>
         </div>
     </body>
 </html>
