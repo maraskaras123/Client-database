@@ -38,7 +38,7 @@ class FGMembersite
     //-----Initialization -------
     function FGMembersite()
     {
-        $this->sitename = 'belekas.esy.es';
+        $this->sitename = 'velniai.esy.es';
         $this->rand_key = '0iQx5oBk66oVZep';
     }
     

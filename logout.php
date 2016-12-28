@@ -12,7 +12,7 @@ $fgmembersite->LogOut();
 	<body>
 		<div class='form'>
 			<h2>You have logged out</h2>
-			<p class='logout'><a href='http://belekas.esy.es'><button>Login Again</button></a></p>
+			<p class='logout'><a href='http://velniai.esy.es'><button>Login Again</button></a></p>
 		</div>
 	</body>
 </html>

@@ -1,5 +1,6 @@
 <?php
-    $db = new mysqli('mysql.hostinger.lt', 'u357666557_user', 'gedas69tevas', 'u357666557_yolo') or die ("Connection failed: " . $db->connect_error);
+    require_once("DB.php");
+    
     $main_query = "SELECT visit_id, person_id, date FROM visits";
     $person_query = "SELECT name, surname, number FROM clients WHERE client_id = \"";
     $name_query = "SELECT client_id, name, surname, number FROM clients WHERE name = \"";

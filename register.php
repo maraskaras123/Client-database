@@ -5,7 +5,7 @@ if(isset($_POST['submitted']))
 {
    if($fgmembersite->RegisterUser())
    {
-        $fgmembersite->RedirectToURL("thank-you.html");
+        $fgmembersite->RedirectToURL("index.php");
    }
 }
 
@@ -52,9 +52,7 @@ if(isset($_POST['submitted']))
 <div class='container' style='height:80px;'>
     <label for='password' >Password*:</label><br/>
     <div class='pwdwidgetdiv' id='thepwddiv' ></div>
-    <noscript>
-    <input type='password' name='password' id='password' maxlength="50" />
-    </noscript>    
+    <input type='password' name='password' id='password' maxlength="50" /> 
     <div id='register_password_errorloc' class='error' style='clear:both'></div>
 </div>
 

@@ -1,5 +1,5 @@
 <?PHP
-    $db = new mysqli('mysql.hostinger.lt', 'u357666557_user', 'gedas69tevas', 'u357666557_yolo') or die ("Connection failed: " . $db->connect_error);
+    require_once("DB.php");
     
     $createQuery = "INSERT INTO clients (name, surname, birth, sex, number, remarks) VALUES ".
     "('".$_POST['name'].

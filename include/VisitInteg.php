@@ -1,5 +1,5 @@
 <?PHP
-    $db = new mysqli('mysql.hostinger.lt', 'u357666557_user', 'gedas69tevas', 'u357666557_yolo') or die ("Connection failed: " . $db->connect_error);
+    require_once("DB.php");
     
     $result = $db->query("SHOW TABLE STATUS LIKE 'visits'");
     $data = $result->fetch_assoc();
@@ -40,11 +40,12 @@
 
     if ($db->query($query) === TRUE) {
         echo "New record created successfully";
+        sleep(1);
+        header('Location: ../main.php'); 
+        exit();
     } else {
         echo "Error: " . $query . "<br>" . $db->error;
     }
 
     $db->close();
-    /*sleep(1);
-    header('Location: ../main.php'); exit();*/
 ?>
