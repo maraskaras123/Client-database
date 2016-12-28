@@ -67,6 +67,8 @@
 			    $currAfterCount++; // Number of successfully uploaded file
 		    }
 	    }
+        $beforeCount = $currBeforeCount;
+        $afterCount = $currAfterCount;
         if ($_POST['type'] == 'before'){
             $before_query = "UPDATE visits SET before_count = {$beforeCount} WHERE visit_id = {$_POST['visit']}";
             $db->query($before_query);
