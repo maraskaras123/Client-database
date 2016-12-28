@@ -108,11 +108,7 @@ select{
     font-weight: bold;
 }
 body{
-    background: #EBFF6B; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #EBFF6B, #EBFF6B);
-    background: -moz-linear-gradient(right, #EBFF6B, #EBFF6B);
-    background: -o-linear-gradient(right, #EBFF6B, #EBFF6B);
-    background: linear-gradient(to left, #EBFF6B, #EBFF6B);
+    background: #c9d617; /* fallback for old browsers */
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;   

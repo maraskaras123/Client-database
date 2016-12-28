@@ -115,14 +115,17 @@
 .visit tr:nth-child(even){
   background-color: #f2f2f2;
 }
+.visit tr:nth-child(odd){
+  background-color: #d9d9d9;
+}
 .visit tr:hover {
-  background-color: #ddd;
+  background-color: #bfbfbf;
 }
 .visit th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #FFFF3B;
+    background-color: #ddff00;
     color: black;
 }
 .logout button{
@@ -156,11 +159,7 @@
   font-weight: bold;
 }
 body { 
-  background: #EBFF6B; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #EBFF6B, #EBFF6B);
-  background: -moz-linear-gradient(right, #EBFF6B, #EBFF6B);
-  background: -o-linear-gradient(right, #EBFF6B, #EBFF6B);
-  background: linear-gradient(to left, #EBFF6B, #EBFF6B);
+  background: #c9d617; /* fallback for old browsers */
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
