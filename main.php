@@ -22,7 +22,7 @@ if(!$fgmembersite->CheckLogin())
 			<a href='createVisit.php'><button style="background: #3DBBFF;">create visit</button></a>
 			<a href='logout.php' style='margin-left: 4.5%;'><button>logout</button></a>
 		</p>
-		<form action="/main.php" method="post">
+		<form action="main.php" method="post">
 			<ul class="form-style-1" style="width: 100%;">
 				<li style="display: inline;"><input type="text" name="name" class="field-quater" placeholder="Name" /></li>
 				<li style="display: inline;"><input type="text" name="surname" class="field-quater" placeholder="Surname" /></li>
