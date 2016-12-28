@@ -37,23 +37,44 @@ if(!$fgmembersite->CheckLogin()) {
         </div>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 10px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
             <p>
-                Before photos:<br>
-                <a download="8_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                Before photos:
+                <?
+                    if($visit['before_count'] == 0){
+                        echo ('<form action="include/VisitInteg.php" method="post" enctype="multipart/form-data">');
+                        echo ("<input type='hidden' name='visit' id='visit' value='{$visit['visit_id']}' />");
+                        echo ("<input type='hidden' name='type' id='type' value='before' />");
+                        echo ('<input type="file" name="before[]" multiple="multiple" style="background-color: #bfbfbf; width: 500px;" accept="image/*">');
+                        echo ('<input type="submit" value="Submit" name="submit" style="background-color: #bfbfbf; font-weight: bold; width: 500px;" />');
+                        echo ('</form>');
+                    }
+                    else {
+                        echo ("<br>");
+                        for($i = 0; $i < $visit['before_count']; $i++){
+                            echo ("<a download='{$visit['visit_id']}_before_{$i}.jpg' href='photos/{$visit['visit_id']}_before_{$i}.jpg' title='ImageName'><img alt='{$visit['visit_id']}_before_{$i}.jpg' src='photos/{$visit['visit_id']}_before_{$i}.jpg'/></a>");
+                        }
+                    }
+                ?>
             </p>
         </div>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 10px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
             <p>
-                After photos:<br>
-                <a download="1_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="2_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="3_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="4_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="5_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="6_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="7_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="8_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="9_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
-                <a download="10_0.jpg" href="photos/8_0.jpg" title="ImageName"><img alt="8_0" src="photos/8_0.jpg"/></a>
+                After photos:
+                <?
+                    if($visit['after_count'] == 0){
+                        echo ('<form action="include/VisitInteg.php" method="post" enctype="multipart/form-data">');
+                        echo ("<input type='hidden' name='visit' id='visit' value='{$visit['visit_id']}' />");
+                        echo ("<input type='hidden' name='type' id='type' value='after' />");
+                        echo ('<input type="file" name="after[]" multiple="multiple" style="background-color: #bfbfbf; width: 500px;" accept="image/*">');
+                        echo ('<input type="submit" value="Submit" name="submit" style="background-color: #bfbfbf; font-weight: bold; width: 500px;" />');
+                        echo ('</form>');
+                    }
+                    else {
+                        echo ("<br>");
+                        for($i = 0; $i < $visit['after_count']; $i++){
+                            echo ("<a download='{$visit['visit_id']}_after_{$i}.jpg' href='photos/{$visit['visit_id']}_after_{$i}.jpg' title='ImageName'><img alt='{$visit['visit_id']}_after_{$i}.jpg' src='photos/{$visit['visit_id']}_after_{$i}.jpg'/></a>");
+                        }
+                    }
+                ?>
             </p>
         </div>
     </body>
