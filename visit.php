@@ -1,11 +1,10 @@
 <?PHP
-require_once("./include/membersite_config.php");
-require_once("/include/DBInteg.php");
+require_once("include/membersite_config.php");
+require_once("include/DBInteg.php");
 if(!$fgmembersite->CheckLogin()) {
     $fgmembersite->RedirectToURL("index.php");
     exit;
 }
-
 ?>
 <DOCTYPE html>
 <html>
@@ -20,15 +19,18 @@ if(!$fgmembersite->CheckLogin()) {
     <body style="font-size: 30px; font-weight: bold; text-align: center;">
         <a href='main.php'><button style="background: #3DBBFF; width: 700px; padding: 2px; height: 50px; font-size: 20px;"><strong>Back to visits</strong></button></a>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 20px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
-            Rasa Maroziene
-            <br>
-            2016-12-28
-            <br>
-            type: cba
-            <br>
-            amount: 1.5
-            <br>
-            price: &euro;45
+            <?php
+                $visit = getVisitByID($db, $visitID_query, $_GET['id']);
+                $client = getClientByID($db, $clientID_query, $visit['person_id']);
+                echo ("{$client['name']} {$client['surname']} {$client['birth']}<br>");
+                echo ("{$visit['date']}<br>");
+                echo ("Type & amount: {$visit['type']} {$visit['amount']}<br>");
+                /*$price = $visit['price'];
+                if (strpos($price, '€') !== false) {*/
+                    $price = str_replace("€", "&euro;", $visit['price']);
+                /*}*/
+                echo ("Price: {$price}");
+            ?>
         </div>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 10px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
         Before photos:

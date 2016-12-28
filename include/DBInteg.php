@@ -9,6 +9,8 @@
     $visit_query = "SELECT visit_id, date FROM visits WHERE person_id = \"";
     $client_query = "SELECT client_id, name, surname, number FROM clients";
     $date_query = "SELECT visit_id, person_id, date FROM visits WHERE date = \"";
+    $visitID_query = "SELECT visit_id, person_id, date, type, amount,price, remarks, before_count, after_count FROM visits WHERE visit_id = \"";
+    $clientID_query = "SELECT client_id, name, surname, birth, sex, number, remarks FROM clients WHERE client_id = \"";
 
     function getAllVisits($db, $main_query, $person_query){
         $main_result = $db->query($main_query);
@@ -83,5 +85,15 @@
         while($row = $client_result->fetch_assoc()){
 			echo ("<tr id=\"" . $row['client_id'] . "\"><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['number'] . "</td></tr>");
 		}
+    }
+    function getVisitByID($db, $visitID_query, $ID){
+        $visitID_result = $db->query($visitID_query . $ID . "\"");
+        $visit = $visitID_result->fetch_assoc();
+		return $visit;
+    }
+    function getClientByID($db, $clientID_query, $ID){
+        $clientID_result = $db->query($clientID_query . $ID . "\"");
+        $client = $clientID_result->fetch_assoc();
+		return $client;
     }
 ?>
