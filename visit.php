@@ -15,9 +15,13 @@ if(!$fgmembersite->CheckLogin()) {
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
 		<title>visit info</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="scripts/visit.js"></script>
     </head>
     <body style="font-size: 30px; font-weight: bold; text-align: center;">
-        <a href='main.php'><button style="background: #3DBBFF; width: 700px; padding: 2px; height: 50px; font-size: 20px;"><strong>Back to visits</strong></button></a>
+        <div id="overlay" style="width:100%;z-index: 0; height: 100%;position:fixed; background-color: black; display: none;">
+            <img id='overlayimg' src='' alt='unable to get photo'></img>
+        </div>
+        <a href='main.php'><button style="background: #3DBBFF; width: 700px; padding: 2px; height: 50px; font-size: 20px; z-index: 2;"><strong>Back to visits</strong></button></a>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 20px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
             <p>
                 <?php
@@ -27,11 +31,7 @@ if(!$fgmembersite->CheckLogin()) {
                     echo ("{$client['number']}<br>");
                     echo ("{$visit['date']}<br>");
                     echo ("Type & amount: {$visit['type']} {$visit['amount']}<br>");
-                    /*$price = $visit['price'];
-                    if (strpos($price, '€') !== false) {*/
-                        $price = str_replace("€", "&euro;", $visit['price']);
-                    /*}*/
-                    echo ("Price: {$price}");
+                    echo ("Price: {$visit['price']} {$visit['currency']}");
                 ?>
             </p>
         </div>
@@ -40,7 +40,7 @@ if(!$fgmembersite->CheckLogin()) {
                 Before photos:
                 <?
                     if($visit['before_count'] == 0){
-                        echo ('<form action="include/VisitInteg.php" method="post" enctype="multipart/form-data">');
+                        echo ('<form action="include/UpdateInteg.php" method="post" enctype="multipart/form-data">');
                         echo ("<input type='hidden' name='visit' id='visit' value='{$visit['visit_id']}' />");
                         echo ("<input type='hidden' name='type' id='type' value='before' />");
                         echo ('<input type="file" name="before[]" multiple="multiple" style="background-color: #bfbfbf; width: 500px;" accept="image/*">');
@@ -50,7 +50,8 @@ if(!$fgmembersite->CheckLogin()) {
                     else {
                         echo ("<br>");
                         for($i = 0; $i < $visit['before_count']; $i++){
-                            echo ("<a download='{$visit['visit_id']}_before_{$i}.jpg' href='photos/{$visit['visit_id']}_before_{$i}.jpg' title='ImageName'><img alt='{$visit['visit_id']}_before_{$i}.jpg' src='photos/{$visit['visit_id']}_before_{$i}.jpg'/></a>");
+                            //echo ("<a download='{$visit['visit_id']}_before_{$i}.jpg' href='photos/{$visit['visit_id']}_before_{$i}.jpg' title='ImageName'><img alt='{$visit['visit_id']}_before_{$i}.jpg' src='photos/{$visit['visit_id']}_before_{$i}.jpg'/></a>");
+                            echo ("<img alt='{$visit['visit_id']}_before_{$i}.jpg' src='photos/{$visit['visit_id']}_before_{$i}.jpg'/>");
                         }
                     }
                 ?>
@@ -61,7 +62,7 @@ if(!$fgmembersite->CheckLogin()) {
                 After photos:
                 <?
                     if($visit['after_count'] == 0){
-                        echo ('<form action="include/VisitInteg.php" method="post" enctype="multipart/form-data">');
+                        echo ('<form action="include/UpdateInteg.php" method="post" enctype="multipart/form-data">');
                         echo ("<input type='hidden' name='visit' id='visit' value='{$visit['visit_id']}' />");
                         echo ("<input type='hidden' name='type' id='type' value='after' />");
                         echo ('<input type="file" name="after[]" multiple="multiple" style="background-color: #bfbfbf; width: 500px;" accept="image/*">');
@@ -71,11 +72,13 @@ if(!$fgmembersite->CheckLogin()) {
                     else {
                         echo ("<br>");
                         for($i = 0; $i < $visit['after_count']; $i++){
-                            echo ("<a download='{$visit['visit_id']}_after_{$i}.jpg' href='photos/{$visit['visit_id']}_after_{$i}.jpg' title='ImageName'><img alt='{$visit['visit_id']}_after_{$i}.jpg' src='photos/{$visit['visit_id']}_after_{$i}.jpg'/></a>");
+                            //echo ("<a download='{$visit['visit_id']}_after_{$i}.jpg' href='photos/{$visit['visit_id']}_after_{$i}.jpg' title='ImageName'><img alt='{$visit['visit_id']}_after_{$i}.jpg' src='photos/{$visit['visit_id']}_after_{$i}.jpg'/></a>");
+                            echo ("<img alt='{$visit['visit_id']}_after_{$i}.jpg' src='photos/{$visit['visit_id']}_after_{$i}.jpg'/>");
                         }
                     }
                 ?>
             </p>
         </div>
+        
     </body>
 </html>

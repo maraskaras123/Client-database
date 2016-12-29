@@ -50,7 +50,7 @@ if(!$fgmembersite->CheckLogin()) {
 				</tbody>
 			</table>
         </div>
-        <div id="main" >
+        <div id="main" style="display: none;">
             <form action="include/VisitInteg.php" method="post" enctype="multipart/form-data">
                 <input type='hidden' name='person' id='person' />
                 <ul class="form-style-1" style="max-width: 400px;">
@@ -65,8 +65,8 @@ if(!$fgmembersite->CheckLogin()) {
                     <li>
                         <label>Price</label>
                         <select name="currency" style='width: 20%;'>
-                            <option value="&euro;">&euro;</option>
-                            <option value="&pound;">&pound;</option>
+                            <option value="euros">euros</option>
+                            <option value="pounds">pounds</option>
                         </select>&nbsp;<input type="number" name="price" placeholder="Price" style="width: 78.5%;" />
                     </li>
                     <li>
