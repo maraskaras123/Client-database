@@ -1,7 +1,7 @@
 <?PHP
-require("include/membersite_config.php");
-require("include/DBInteg.php");
-require("include/DB.php");
+require_once("include/membersite_config.php");
+require_once("include/DBInteg.php");
+require_once("include/db.php");
 if(!$fgmembersite->CheckLogin())
 {
     $fgmembersite->RedirectToURL("index.php");
@@ -44,16 +44,16 @@ if(!$fgmembersite->CheckLogin())
 				<tbody>
 					<?
 						if (!empty($_POST['name']) && !empty($_POST['surname']))
-							getVisitsByNameAndSurname($db, $name_surname_query, $visit_query, $_POST['name'], $_POST['surname']);
+							getVisitsByNameAndSurname(DB::$db, $name_surname_query, $visit_query, $_POST['name'], $_POST['surname']);
 						else if(!empty($_POST['name']))
-							getVisitsByName($db, $name_query, $visit_query, $_POST['name']);
+							getVisitsByName(DB::$db, $name_query, $visit_query, $_POST['name']);
 						else if (!empty($_POST['surname'])){
-							getVisitsBySurname($db, $surname_query, $visit_query, $_POST['surname']);
+							getVisitsBySurname(DB::$db, $surname_query, $visit_query, $_POST['surname']);
 						}
 						else if (!empty($_POST['date']))
-							getVisitsByDate($db, $date_query, $person_query, $_POST['date']);
+							getVisitsByDate(DB::$db, $date_query, $person_query, $_POST['date']);
 						else
-							getAllVisits($db, $main_query, $person_query);
+							getAllVisits(DB::$db, $main_query, $person_query);
 					?>
 				</tbody>
 			</table>

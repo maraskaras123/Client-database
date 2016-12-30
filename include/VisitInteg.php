@@ -1,7 +1,7 @@
 <?PHP
-    require_once("DB.php");
+    require_once("db.php");
     
-    $result = $db->query("SHOW TABLE STATUS LIKE 'visits'");
+    $result = DB::$db->query("SHOW TABLE STATUS LIKE 'visits'");
     $data = $result->fetch_assoc();
     $next_increment = $data['Auto_increment'];
 
@@ -33,10 +33,10 @@
     fwrite($myfile, $query);
     fclose($myfile);
     
-    if ($db->query($query) === TRUE) {
+    if (DB::$db->query($query) === TRUE) {
         echo "New record created successfully";
         header('Location: ../main.php'); 
         exit();
     } else
-        echo "Error: " . $query . "<br>" . $db->error;
+        echo "Error: " . $query . "<br>" . DB::$db->error;
 ?>
