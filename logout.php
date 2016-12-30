@@ -1,5 +1,5 @@
 <?PHP
-require_once("./include/membersite_config.php");
+require_once("include/membersite_config.php");
 $fgmembersite->LogOut();
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ $fgmembersite->LogOut();
 	<body>
 		<div class='form'>
 			<h2>You have logged out</h2>
-			<p class='logout'><a href='http://velniai.esy.es'><button>Login Again</button></a></p>
+			<p class='logout'><a href='http://marozija.puslapiai.lt'><button>Login Again</button></a></p>
 		</div>
 	</body>
 </html>
