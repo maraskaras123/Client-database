@@ -84,7 +84,7 @@ class FGMembersite
             return false;
         }
         $user_rec = array();
-        if(!$this->UpdateDBRecForConfirmation($db, $user_rec))
+        if(!$this->UpdateDBRecForConfirmation($user_rec))
         {
             return false;
         }
@@ -114,7 +114,7 @@ class FGMembersite
         $password = trim($_POST['password']);
         
         if(!isset($_SESSION)){ session_start(); }
-        if(!$this->CheckLoginInDB($db, $username,$password))
+        if(!$this->CheckLoginInDB($username,$password))
         {
             return false;
         }
@@ -166,7 +166,7 @@ class FGMembersite
             return false;
         }
         $user_rec = array();
-        if(false === $this->GetUserFromEmail($db, $_POST['email'], $user_rec))
+        if(false === $this->GetUserFromEmail($_POST['email'], $user_rec))
         {
             return false;
         }
@@ -199,7 +199,7 @@ class FGMembersite
         }
         
         $user_rec = array();
-        if(!$this->GetUserFromEmail($db, $email,$user_rec))
+        if(!$this->GetUserFromEmail($email,$user_rec))
         {
             return false;
         }
@@ -239,7 +239,7 @@ class FGMembersite
         }
         
         $user_rec = array();
-        if(!$this->GetUserFromEmail($db, $this->UserEmail(),$user_rec))
+        if(!$this->GetUserFromEmail($this->UserEmail(),$user_rec))
         {
             return false;
         }
@@ -253,7 +253,7 @@ class FGMembersite
         }
         $newpwd = trim($_POST['newpwd']);
         
-        if(!$this->ChangePasswordInDB($db, $user_rec, $newpwd))
+        if(!$this->ChangePasswordInDB($user_rec, $newpwd))
         {
             return false;
         }
@@ -327,14 +327,14 @@ class FGMembersite
         return $retvar;
     }
     
-    function CheckLoginInDB($db, $username,$password)
+    function CheckLoginInDB($username,$password)
     {
         if(!$this->DBLogin())
         {
             $this->HandleError("Database login failed!");
             return false;
         }          
-        $username = $this->SanitizeForSQL($db, $username);
+        $username = $this->SanitizeForSQL($username);
         $pwdmd5 = md5($password);
         $qry = "Select name, email from $this->tablename where username='$username' and password='$pwdmd5' and confirmcode='y'";
         
@@ -355,14 +355,14 @@ class FGMembersite
         return true;
     }
     
-    function UpdateDBRecForConfirmation($db, &$user_rec)
+    function UpdateDBRecForConfirmation(&$user_rec)
     {
         if(!$this->DBLogin())
         {
             $this->HandleError("Database login failed!");
             return false;
         }   
-        $confirmcode = $this->SanitizeForSQL($db, $_GET['code']);
+        $confirmcode = $this->SanitizeForSQL($_GET['code']);
         
         $result = DB::$db->query("Select name, email from $this->tablename where confirmcode='$confirmcode'");   
         if($result->num_rows == 0)
@@ -388,16 +388,16 @@ class FGMembersite
     {
         $new_password = substr(md5(uniqid()),0,10);
         
-        if(false == $this->ChangePasswordInDB($db, $user_rec,$new_password))
+        if(false == $this->ChangePasswordInDB($user_rec,$new_password))
         {
             return false;
         }
         return $new_password;
     }
     
-    function ChangePasswordInDB($db, $user_rec, $newpwd)
+    function ChangePasswordInDB($user_rec, $newpwd)
     {
-        $newpwd = $this->SanitizeForSQL($db, $newpwd);
+        $newpwd = $this->SanitizeForSQL($newpwd);
         
         $qry = "Update $this->tablename Set password='".md5($newpwd)."' Where  id_user=".$user_rec['id_user']."";
         
@@ -409,14 +409,14 @@ class FGMembersite
         return true;
     }
     
-    function GetUserFromEmail($db, $email,&$user_rec)
+    function GetUserFromEmail($email,&$user_rec)
     {
         if(!$this->DBLogin())
         {
             $this->HandleError("Database login failed!");
             return false;
         }   
-        $email = $this->SanitizeForSQL($db, $email);
+        $email = $this->SanitizeForSQL($email);
         
         $result = DB::$db->query("Select * from $this->tablename where email='$email'",$this->connection);  
 
@@ -674,18 +674,18 @@ class FGMembersite
         {
             return false;
         }
-        if(!$this->IsFieldUnique($db, $formvars,'email'))
+        if(!$this->IsFieldUnique($formvars,'email'))
         {
             $this->HandleError("This email is already registered");
             return false;
         }
         
-        if(!$this->IsFieldUnique($db, $formvars,'username'))
+        if(!$this->IsFieldUnique($formvars,'username'))
         {
             $this->HandleError("This UserName is already used. Please try another username");
             return false;
         }        
-        if(!$this->InsertIntoDB($db, $formvars))
+        if(!$this->InsertIntoDB($formvars))
         {
             $this->HandleError("Inserting to Database failed!");
             return false;
@@ -693,9 +693,9 @@ class FGMembersite
         return true;
     }
     
-    function IsFieldUnique($db, $formvars,$fieldname)
+    function IsFieldUnique($formvars,$fieldname)
     {
-        $field_val = $this->SanitizeForSQL($db, $formvars[$fieldname]);
+        $field_val = $this->SanitizeForSQL($formvars[$fieldname]);
         $qry = "select username from $this->tablename where $fieldname='".$field_val."'";
         $result = DB::$db->query($qry);   
         if($result)
@@ -756,7 +756,7 @@ class FGMembersite
         return true;
     }
     
-    function InsertIntoDB($db, &$formvars)
+    function InsertIntoDB(&$formvars)
     {
     
         $confirmcode = $this->MakeConfirmationMd5($formvars['email']);
@@ -772,9 +772,9 @@ class FGMembersite
                 )
                 values
                 (
-                "' . $this->SanitizeForSQL($db, $formvars['name']) . '",
-                "' . $this->SanitizeForSQL($db, $formvars['email']) . '",
-                "' . $this->SanitizeForSQL($db, $formvars['username']) . '",
+                "' . $this->SanitizeForSQL($formvars['name']) . '",
+                "' . $this->SanitizeForSQL($formvars['email']) . '",
+                "' . $this->SanitizeForSQL($formvars['username']) . '",
                 "' . md5($formvars['password']) . '",
                 "' . $confirmcode . '"
                 )';      
@@ -791,7 +791,7 @@ class FGMembersite
         $randno2 = rand();
         return md5($email.$this->rand_key.$randno1.''.$randno2);
     }
-    function SanitizeForSQL($db, $str)
+    function SanitizeForSQL($str)
     {
         $ret_str = addslashes( $str );
         return $ret_str;

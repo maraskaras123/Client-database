@@ -26,8 +26,8 @@ if(!$fgmembersite->CheckLogin()) {
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 20px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
             <p>
                 <?php
-                    $visit = getVisitByID($db, $visitID_query, $_GET['id']);
-                    $client = getClientByID($db, $clientID_query, $visit['person_id']);
+                    $visit = getVisitByID($visitID_query, $_GET['id']);
+                    $client = getClientByID($clientID_query, $visit['person_id']);
                     echo ("{$client['name']} {$client['surname']} {$client['birth']}<br>");
                     echo ("{$client['number']}<br>");
                     echo ("{$visit['date']}<br>");

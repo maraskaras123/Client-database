@@ -44,16 +44,16 @@ if(!$fgmembersite->CheckLogin())
 				<tbody>
 					<?
 						if (!empty($_POST['name']) && !empty($_POST['surname']))
-							getVisitsByNameAndSurname(DB::$db, $name_surname_query, $visit_query, $_POST['name'], $_POST['surname']);
+							getVisitsByNameAndSurname($name_surname_query, $visit_query, $_POST['name'], $_POST['surname']);
 						else if(!empty($_POST['name']))
-							getVisitsByName(DB::$db, $name_query, $visit_query, $_POST['name']);
+							getVisitsByName($name_query, $visit_query, $_POST['name']);
 						else if (!empty($_POST['surname'])){
-							getVisitsBySurname(DB::$db, $surname_query, $visit_query, $_POST['surname']);
+							getVisitsBySurname($surname_query, $visit_query, $_POST['surname']);
 						}
 						else if (!empty($_POST['date']))
-							getVisitsByDate(DB::$db, $date_query, $person_query, $_POST['date']);
+							getVisitsByDate($date_query, $person_query, $_POST['date']);
 						else
-							getAllVisits(DB::$db, $main_query, $person_query);
+							getAllVisits($main_query, $person_query);
 					?>
 				</tbody>
 			</table>

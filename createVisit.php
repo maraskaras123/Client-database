@@ -38,15 +38,15 @@ if(!$fgmembersite->CheckLogin()) {
 				<tbody>
                     <?
                         if(!empty($_POST['name']) && !empty($_POST['surname']))
-							getClientsByNameAndSurname($db, $client_query, $_POST['name'], $_POST['surname']);
+							getClientsByNameAndSurname($client_query, $_POST['name'], $_POST['surname']);
 						else if(!empty($_POST['name']))
-                            getClientsByName($db, $client_query, $_POST['name']);
+                            getClientsByName($client_query, $_POST['name']);
 						else if (!empty($_POST['surname']))
-							getClientsBySurname($db, $client_query, $_POST['surname']);
+							getClientsBySurname($client_query, $_POST['surname']);
                         else if (!empty($_POST['number']))
-                            getClientsByNumber($db, $client_query, $_POST['number']);
+                            getClientsByNumber($client_query, $_POST['number']);
 						else
-							getAllClients($db, $client_query);
+							getAllClients($client_query);
                     ?>
 				</tbody>
 			</table>
