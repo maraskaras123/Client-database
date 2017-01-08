@@ -8,25 +8,28 @@ if(!$fgmembersite->CheckLogin()) {
 }
 
 ?>
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style/style.css" />
         <link rel="stylesheet" type="text/css" href="style/Form.css" />
 		<title>visit info</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="scripts/jquery-3_1_1_min.js"></script>
         <script src="scripts/userPick.js"></script>
     </head>
     <body>
         <div id="picker">
             <form action="/createVisit.php" method="post">
-			    <ul class="form-style-1" style="width: 100%;">
+			    <ul class="form-style-1" style="width: 98%;">
 				    <li style="display: inline;"><input type="text" name="name" class="field-quater" placeholder="Name" /></li>
 				    <li style="display: inline;"><input type="text" name="surname" class="field-quater" placeholder="Surname" /></li>
 				    <li style="display: inline;"><input type="text" name="number" class="field-quater" placeholder="Number" /></li>
-				    <li style="display: inline;"><input type="submit" value="Submit" name="submit" class="field-quater"></li>
+				    <li style="display: inline;"><input type="submit" value="Submit" name="submit" class="field-quater" /></li>
 			    </ul>
 		    </form>
+            <p class="main-logout" style="text-align: center; display: block;">
+			    <a href='createClient.php'><button style="background: #3DBBFF; width: 45%; height: 31px; padding-top: 8px;">create client</button></a>
+		    </p>
             <table class="visit">
 				<thead>
 					<tr>
@@ -35,20 +38,18 @@ if(!$fgmembersite->CheckLogin()) {
 						<th>Number</th>
 					</tr>
 				</thead>
-				<tbody>
                     <?
                         if(!empty($_POST['name']) && !empty($_POST['surname']))
-							getClientsByNameAndSurname($client_query, $_POST['name'], $_POST['surname']);
-						else if(!empty($_POST['name']))
+                            getClientsByNameAndSurname($client_query, $_POST['name'], $_POST['surname']);
+                        else if(!empty($_POST['name']))
                             getClientsByName($client_query, $_POST['name']);
-						else if (!empty($_POST['surname']))
-							getClientsBySurname($client_query, $_POST['surname']);
+                        else if (!empty($_POST['surname']))
+                            getClientsBySurname($client_query, $_POST['surname']);
                         else if (!empty($_POST['number']))
                             getClientsByNumber($client_query, $_POST['number']);
-						else
-							getAllClients($client_query);
+                        else
+                            getAllClients($client_query);
                     ?>
-				</tbody>
 			</table>
         </div>
         <div id="main" style="display: none;">
