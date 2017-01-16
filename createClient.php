@@ -1,7 +1,7 @@
 <?PHP
-require("include/membersite_config.php");
-require("include/DBInteg.php");
-require("include/DB.php");
+require_once("include/membersite_config.php");
+require_once("include/DBInteg.php");
+require_once("include/db.php");
 if(!$fgmembersite->CheckLogin()) {
     $fgmembersite->RedirectToURL("index.php");
     exit;
