@@ -1,0 +1,24 @@
+.form img {
+    height: 80px;
+    width: 80px;
+}
+#overlay img {
+    height: 100%;
+    max-width: 100%
+}
+#overlay {
+    z-index: 2;
+}
+body{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+div{
+    background-color: #fff;
+    text-align: center;
+    width: 700px;
+}
+span {
+    font-size: 20px;
+}
