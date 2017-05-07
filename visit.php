@@ -73,13 +73,13 @@ if(!$fgmembersite->CheckLogin()) {
         <? if (!empty($client['remarks'])) { ?>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 10px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
             <p>
-                <?echo ("client remarks:<br><span>{$client['remarks']}</span>");?>
+                <? echo ("client remarks:<br><span>{$client['remarks']}</span>"); ?>
             </p>
         </div>
         <? } if (!empty($visit['remarks'])) { ?>
         <div class="form" style="width: 700px; max-width: 700px; margin-top: 10px; margin-bottom: 0px; padding: 2px; background: #ffffb3;">
             <p>
-                <?echo ("visit remarks:<br><span>{$visit['remarks']}</span>");?>
+                <? echo ("visit remarks:<br><span>{$visit['remarks']}</span>"); ?>
             </p>
         </div>
         <? } ?>
